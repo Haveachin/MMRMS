@@ -1,0 +1,12 @@
+﻿[
+  "blockstates",
+  "lang",
+  "loot_tables/entities",
+  "recipes",
+  "models/block",
+  "models/item",
+  "textures/blocks",
+  "textures/items",
+  "textures/entity",
+  "textures/gui"
+]
