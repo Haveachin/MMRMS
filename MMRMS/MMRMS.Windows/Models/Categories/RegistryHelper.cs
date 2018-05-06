@@ -1,7 +1,7 @@
 ﻿using MMRMS.Windows.Models.Categories.Interfaces;
 using MMRMS.Windows.Models.Errors;
 using Newtonsoft.Json.Linq;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,7 +20,7 @@ namespace MMRMS.Windows.Models.Categories
         /// </summary>
         /// <param name="blocks">A list of block classes</param>
         /// <param name="blockStateFile">The path to the block state file</param>
-        public static async void RegisterBlockState(ObservableCollection<Block> blocks, string blockStateFile)
+        public static async void RegisterBlockState(List<Block> blocks, string blockStateFile)
         {
             var registryName = await GetRegistryName(blockStateFile);
             var blcks = blocks.Where(i => i.RegistryName == registryName).ToList();
@@ -37,7 +37,7 @@ namespace MMRMS.Windows.Models.Categories
         /// <typeparam name="T">A data class that has a model</typeparam>
         /// <param name="list">A list of data classes with a model</param>
         /// <param name="modelFile">The path to the model file</param>
-        public static async void RegisterModel<T>(ObservableCollection<T> list, string modelFile) where T : IHasRegistryName, IHasModel, new()
+        public static async void RegisterModel<T>(List<T> list, string modelFile) where T : IHasRegistryName, IHasModel, new()
         {
             var registryName = await GetRegistryName(modelFile);
             var items = list.Where(i => i.RegistryName == registryName).ToList();
@@ -54,7 +54,7 @@ namespace MMRMS.Windows.Models.Categories
         /// <typeparam name="T">A data class that has a texture</typeparam>
         /// <param name="list"></param>
         /// <param name="textureFile">The path to the texture file</param>
-        public static void RegisterTexture<T>(ObservableCollection<T> list, string textureFile) where T : IHasRegistryName, IHasTexture, new()
+        public static void RegisterTexture<T>(List<T> list, string textureFile) where T : IHasRegistryName, IHasTexture, new()
         {
             var dirs = textureFile.Split('\\');
             var registryName = dirs[dirs.Length - 1].Split('.')[0];

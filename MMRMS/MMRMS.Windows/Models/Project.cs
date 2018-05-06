@@ -22,15 +22,17 @@ namespace MMRMS.Windows.Models
         public static bool IsOK { get; private set; } = false;
         public static McModInfo McModInfo { get; private set; }
 
+        public static ObservableCollection<TreeViewItem> TreeView { get; private set; } = new ObservableCollection<TreeViewItem>();
+    
         #endregion
 
         #region Attributes
 
-        private static ObservableCollection<Block> _blocks = new ObservableCollection<Block>();
-        private static ObservableCollection<Item> _items = new ObservableCollection<Item>();
-        private static ObservableCollection<Recipe> _recipes = new ObservableCollection<Recipe>();
-        private static ObservableCollection<LootTable> _lootTables = new ObservableCollection<LootTable>();
-        private static ObservableCollection<Lang> _langs = new ObservableCollection<Lang>();
+        private static List<Block> _blocks = new List<Block>();
+        private static List<Item> _items = new List<Item>();
+        private static List<Recipe> _recipes = new List<Recipe>();
+        private static List<LootTable> _lootTables = new List<LootTable>();
+        private static List<Lang> _langs = new List<Lang>();
 
         #endregion
 
@@ -42,15 +44,16 @@ namespace MMRMS.Windows.Models
         /// Creates all the Categories for the treeview
         /// </summary>
         /// <returns>The categories</returns>
-        public static ObservableCollection<TreeViewItem> GetCategories()
+        public static void RefreshCategories()
         {
             RemoveBlocksFromItems();
 
-            return new ObservableCollection<TreeViewItem>()
-            {
-                AddCategorie(_blocks, "Blocks", "block"),
-                AddCategorie(_items, "Items", "item")
-            };
+            TreeView.Clear();
+
+            TreeView.Add(AddCategorie(_blocks, "Blocks", "block"));
+            TreeView.Add(AddCategorie(_items, "Items", "item"));
+            //TreeView.Add(AddCategorie(_recipes, "Recepies", "recipes"));
+            //TreeView.Add(AddCategorie(_lootTables, "Loot Table", "lootTable"));
         }
 
         /// <summary>
@@ -61,14 +64,11 @@ namespace MMRMS.Windows.Models
         /// <param name="name">The display name of the categorie</param>
         /// <param name="tag">The icon of the </param>
         /// <returns></returns>
-        private static TreeViewItem AddCategorie<T>(ObservableCollection<T> list, string name, string tag) where T : IHasRegistryName
+        private static TreeViewItem AddCategorie<T>(List<T> list, string name, string tag) where T : IHasRegistryName
         {
             var categorie = new TreeViewItem() { Header = name, Tag = tag };
 
-            foreach (var item in list)
-            {
-                categorie.Items.Add(new TreeViewItem() { Header = item.RegistryName, Tag = item });
-            }
+            list.ForEach(i => categorie.Items.Add(new TreeViewItem() { Header = i.RegistryName, Tag = i }));
 
             return categorie;
         }
@@ -80,14 +80,11 @@ namespace MMRMS.Windows.Models
         {
             var blocksInItems = new List<Item>();
 
-            foreach (var block in _blocks)
+            _blocks.ForEach(b => _items.ForEach(i =>
             {
-                foreach (var item in _items)
-                {
-                    if (block.RegistryName == item.RegistryName)
-                        blocksInItems.Add(item);
-                }
-            }
+                if (b.RegistryName == i.RegistryName)
+                    blocksInItems.Add(i);
+            }));
 
             blocksInItems.ForEach(i => _items.Remove(i));
         }
@@ -126,6 +123,8 @@ namespace MMRMS.Windows.Models
             }
 
             IsOK = true;
+
+            RefreshCategories();
         }
 
         /// <summary>
@@ -287,6 +286,8 @@ namespace MMRMS.Windows.Models
             }
 
             #endregion
+
+            RefreshCategories();
         }
 
         #endregion

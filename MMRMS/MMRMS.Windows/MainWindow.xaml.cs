@@ -34,18 +34,13 @@ namespace MMRMS.Windows
         private async void OnLoadProject(object sender, RoutedEventArgs e)
         {
             var path = await PathRequester.GetFromFolder();
-
-            FolderView.Items.Clear();
                 
-            Project.LoadProject(path);
+            await Project.LoadProject(path);
 
             if (!Project.IsOK)
                 return;
 
-            foreach (var categorie in Project.GetCategories())
-            {
-                FolderView.Items.Add(categorie);
-            }
+            FolderView.ItemsSource = Project.TreeView;
 
             CreateBlock.IsEnabled = true;
             CreateItem.IsEnabled = true;

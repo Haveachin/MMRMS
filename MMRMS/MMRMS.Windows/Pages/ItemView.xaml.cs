@@ -1,26 +1,15 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using MMRMS.Windows.Models.Categories;
 
 namespace MMRMS.Windows.Pages
 {
-    /// <summary>
-    /// Interaction logic for ItemView.xaml
-    /// </summary>
-    public partial class ItemView : Page
+    public class ItemCreationView : CreationView<Item> { }
+
+    public partial class ItemView : ItemCreationView
     {
-        public ItemView()
+        public ItemView(Item item = null)
         {
             InitializeComponent();
-        }
-
-        private void OnLoadImage(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void OnCreate(object sender, RoutedEventArgs e)
-        {
-
+            InitializeView(tbRegistryName, tfImagePath, btnLoadImage, btnSubmit, item);
         }
     }
 }

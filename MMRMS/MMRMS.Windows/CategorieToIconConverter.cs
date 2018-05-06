@@ -32,6 +32,7 @@ namespace MMRMS.Windows
                 {
                     case "block": path = "Images/block_grass.png"; break;
                     case "item": path = "Images/sword_diamond.png"; break;
+                    default: return null;
                 }
 
                 path = $"pack://application:,,,/{path}";
