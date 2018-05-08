@@ -3,6 +3,7 @@ using MMRMS.Windows.Models.Categories.Interfaces;
 using MMRMS.Windows.Utilities.Errors;
 using MMRMS.Windows.Utilities;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace MMRMS.Windows.Pages
 {
@@ -37,6 +38,7 @@ namespace MMRMS.Windows.Pages
         {
             _tbTitle.Text = caption;
 
+            _tbRegistryName.TextChanged += OnRegistryNameChance;
             _btnLoadImage.Click += OnLoadImage;
             _btnSubmit.Click += OnSubmit;
 
@@ -52,6 +54,15 @@ namespace MMRMS.Windows.Pages
         #endregion
 
         #region Events
+
+        /// <summary>
+        /// When the text changes try to fix it
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnRegistryNameChance(object sender, TextChangedEventArgs e)
+            => _tbRegistryName.Text = _tbRegistryName.Text.Replace(' ', '_').ToLower();
+
 
         /// <summary>
         /// An event that loads an image path
