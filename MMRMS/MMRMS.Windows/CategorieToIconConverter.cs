@@ -12,16 +12,26 @@ namespace MMRMS.Windows
     [ValueConversion(typeof(string), typeof(BitmapImage))]
     public class CategorieToIconConverter : IValueConverter
     {
+
+        #region Properties
+
+        /// <summary>
+        /// This exists for easy use in xaml (e.g. MainWindow.xaml)
+        /// </summary>
         public static CategorieToIconConverter Instance = new CategorieToIconConverter();
+
+        #endregion
+
+        #region Converting
 
         /// <summary>
         /// Converts an object in an image path
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">In this case a predefined string</param>
         /// <param name="targetType"></param>
         /// <param name="parameter"></param>
         /// <param name="culture"></param>
-        /// <returns></returns>
+        /// <returns>The coresponding image</returns>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             string path = null;
@@ -48,9 +58,14 @@ namespace MMRMS.Windows
             return new BitmapImage(new Uri(path));
         }
 
+        /// <summary>
+        /// Not implemented but needed for IValueConverter
+        /// </summary>
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }
+
+        #endregion
     }
 }

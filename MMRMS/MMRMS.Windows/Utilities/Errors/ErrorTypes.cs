@@ -1,4 +1,4 @@
-﻿namespace MMRMS.Windows.Models.Errors
+﻿namespace MMRMS.Windows.Utilities.Errors
 {
     /// <summary>
     /// All error types that can happen
@@ -20,6 +20,10 @@
         /// <summary>
         /// A file has the wrong format
         /// </summary>
-        WrongFileFormat
+        WrongFileFormat,
+        /// <summary>
+        /// A required parameter in an form
+        /// </summary>
+        MissingParameter
     }
 }

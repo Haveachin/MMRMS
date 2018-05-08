@@ -1,9 +1,8 @@
-﻿<local:ItemCreationView x:Class="MMRMS.Windows.Pages.ItemView"
+﻿<Page x:Class="MMRMS.Windows.Pages.CreationGUI"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:MMRMS.Windows.Pages"
       xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
       TextElement.FontWeight="Regular"
@@ -14,7 +13,7 @@
       FontFamily="{DynamicResource MaterialDesignFont}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ItemView">
+      Title="BlockView">
     <Grid>
         <!-- Column Definitions -->
         <Grid.ColumnDefinitions>
@@ -29,7 +28,7 @@
 
         <!-- Title -->
         <md:Card md:ShadowAssist.ShadowDepth="Depth1" md:ShadowAssist.ShadowEdges="Bottom" Padding="16">
-            <TextBlock Grid.Column="0" Grid.Row="0" Style="{DynamicResource MaterialDesignTitleTextBlock}">New Item</TextBlock>
+            <TextBlock x:Name="_tbTitle" Grid.Column="0" Grid.Row="0" Style="{DynamicResource MaterialDesignTitleTextBlock}">New Block</TextBlock>
         </md:Card>
 
         <!-- Actual menu -->
@@ -55,17 +54,17 @@
                 <TextBox Grid.Column="0" Grid.Row="0" Margin="0 10" IsEnabled="False" md:HintAssist.Hint="Display Name" Style="{StaticResource MaterialDesignTextFieldBoxTextBox}"/>
 
                 <!-- Regestry Name -->
-                <TextBox x:Name="tbRegistryName" Grid.Column="0" Grid.Row="1" Margin="0 10" md:HintAssist.Hint="Registry Name" Style="{StaticResource MaterialDesignTextFieldBoxTextBox}"/>
+                <TextBox x:Name="_tbRegistryName" Grid.Column="0" Grid.Row="1" Margin="0 10" md:HintAssist.Hint="Registry Name" Style="{StaticResource MaterialDesignTextFieldBoxTextBox}"/>
 
                 <!-- Image Path Display -->
-                <TextBlock x:Name="tfImagePath" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" />
+                <TextBlock x:Name="_tfImagePath" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" />
 
                 <!-- Load Image -->
-                <Button x:Name="btnLoadImage"  Grid.Column="0" Grid.Row="3" Margin="0 10">Load Image</Button>
+                <Button x:Name="_btnLoadImage"  Grid.Column="0" Grid.Row="3" Margin="0 10">Load Image</Button>
 
                 <!-- Create Button-->
-                <Button x:Name="btnSubmit" Grid.Column="2" Grid.Row="4" Margin="10 10" VerticalAlignment="Bottom">Create</Button>
+                <Button x:Name="_btnSubmit" Grid.Column="2" Grid.Row="4" Margin="10 10" VerticalAlignment="Bottom">Create</Button>
             </Grid>
         </Border>
     </Grid>
-</local:ItemCreationView>
+</Page>

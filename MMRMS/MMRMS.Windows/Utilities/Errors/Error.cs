@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace MMRMS.Windows.Models.Errors
+namespace MMRMS.Windows.Utilities.Errors
 {
     /// <summary>
     /// A helper class that handles errors
@@ -39,9 +39,13 @@ namespace MMRMS.Windows.Models.Errors
                     caption = "Wrong file format";
                     message = $"The file '{cause}' as the wrong format.";
                     break;
+                case ErrorTypes.MissingParameter:
+                    caption = "Missing parameter";
+                    message = $"The parameter '{cause}' is required.";
+                    break;
             }
 
-            await DialogHost.Show(new ErrorView(caption, message), "Main");
+            await DialogHost.Show(new ErrorPage(caption, message), "Main");
         }
 
         #endregion

@@ -1,4 +1,4 @@
-﻿<Page x:Class="MMRMS.Windows.Pages.WelcomeView"
+﻿<Page x:Class="MMRMS.Windows.Pages.WelcomePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 

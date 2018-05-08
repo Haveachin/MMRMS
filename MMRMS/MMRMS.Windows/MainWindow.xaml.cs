@@ -19,7 +19,7 @@ namespace MMRMS.Windows
         {
             InitializeComponent();
 
-            this.ContentPage.Content = new WelcomeView();
+            this.ContentPage.Content = new WelcomePage();
         }
 
         #endregion
@@ -34,6 +34,9 @@ namespace MMRMS.Windows
         private async void OnLoadProject(object sender, RoutedEventArgs e)
         {
             var path = await PathRequester.GetFromFolder();
+
+            if (string.IsNullOrEmpty(path))
+                return;
                 
             await Project.LoadProject(path);
 
@@ -52,7 +55,7 @@ namespace MMRMS.Windows
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void OnCreateBlock(object sender, RoutedEventArgs e)
-            => this.ContentPage.Content = new BlockView();
+            => this.ContentPage.Content = new BlockPage();
 
         /// <summary>
         /// Opens a new item creation screen
@@ -60,7 +63,7 @@ namespace MMRMS.Windows
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void OnCreateItem(object sender, RoutedEventArgs e)
-            => this.ContentPage.Content = new ItemView();
+            => this.ContentPage.Content = new ItemPage();
 
         #endregion
     }

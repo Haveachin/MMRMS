@@ -1,5 +1,5 @@
 ﻿using MMRMS.Windows.Models.Categories.Interfaces;
-using MMRMS.Windows.Models.Errors;
+using MMRMS.Windows.Utilities.Errors;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.IO;

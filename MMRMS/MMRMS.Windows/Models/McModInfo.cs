@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace MMRMS.Windows.Models
 {
+    /// <summary>
+    /// The model for the mcmod.info
+    /// </summary>
     public class McModInfo
     {
         [JsonProperty("modid")]

@@ -69,7 +69,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Pages\CreationView.cs" />
+    <Compile Include="Pages\ItemPage.cs" />
+    <Compile Include="Pages\CreationPage.cs" />
+    <Compile Include="Pages\CreationGUI.xaml.cs">
+      <DependentUpon>CreationGUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BlockPage.cs" />
     <Compile Include="Utilities\PathRequester.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -84,24 +89,20 @@
     <Compile Include="Models\Categories\Interfaces\IHasRegistryName.cs" />
     <Compile Include="Models\Categories\Interfaces\IHasTexture.cs" />
     <Compile Include="CategorieToIconConverter.cs" />
-    <Compile Include="Models\Errors\Error.cs" />
+    <Compile Include="Utilities\Errors\Error.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Models\Errors\ErrorView.xaml">
+    <Page Include="Utilities\Errors\ErrorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\BlockView.xaml">
+    <Page Include="Pages\CreationGUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ItemView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\WelcomeView.xaml">
+    <Page Include="Pages\WelcomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -113,20 +114,14 @@
     <Compile Include="Models\Categories\Lang.cs" />
     <Compile Include="Models\Categories\LootTable.cs" />
     <Compile Include="Models\Categories\Recipe.cs" />
-    <Compile Include="Models\Errors\ErrorTypes.cs" />
-    <Compile Include="Models\Errors\ErrorView.xaml.cs">
-      <DependentUpon>ErrorView.xaml</DependentUpon>
+    <Compile Include="Utilities\Errors\ErrorTypes.cs" />
+    <Compile Include="Utilities\Errors\ErrorPage.xaml.cs">
+      <DependentUpon>ErrorPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\McModInfo.cs" />
     <Compile Include="Models\Project.cs" />
-    <Compile Include="Pages\BlockView.xaml.cs">
-      <DependentUpon>BlockView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\ItemView.xaml.cs">
-      <DependentUpon>ItemView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\WelcomeView.xaml.cs">
-      <DependentUpon>WelcomeView.xaml</DependentUpon>
+    <Compile Include="Pages\WelcomePage.xaml.cs">
+      <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
